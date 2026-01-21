@@ -1,78 +1,109 @@
-## Mandatory Verification & Traceability Requirement
 
-At the end of execution, you must produce a **Verification & Change Report** with the following structure. This is not optional.
 
----
+Mandatory Verification, Traceability & Archival Requirement
 
-### 1. Files Touched
-- Explicit list of every file **created**, **modified**, or **deleted**
-- For each file, specify:
-  - **Why** it was touched
-  - **What** changed (high-level explanation, not raw diffs)
+Now after the execution, you must produce a Verification & Change Report. This is mandatory.
 
----
+Report Metadata (Required)
 
-### 2. Security Verification
-You must explicitly confirm all of the following:
-- No API keys or secrets exist in client-side code
-- No secrets are present in the final frontend bundle
-- All sensitive logic (LLM calls, credentials, config) is server-side only
+At the very top of the report, include:
+	•	Title: Verification & Change Report — <Task Name>
+	•	Date: <YYYY-MM-DD>
+	•	Status: Completed
+	•	Scope: <Brief scope statement>
 
-Also state **how** this was verified:
-- Build output inspection
-- Config review
-- Manual search
-- Other concrete method
+⸻
 
-If something was not verified, it must be marked **UNVERIFIED**.
+Report Structure (Do Not Alter)
 
----
+1. Files Touched
+	•	Explicit list of every file created, modified, or deleted
+	•	For each file:
+	•	Why it was touched
+	•	What changed (high-level, no diffs)
 
-### 3. Scope Compliance Check
+⸻
+
+2. Security Verification
 Explicitly confirm:
-- No new product features were added
-- No UI/UX changes were made unless strictly required for security
-- No Phase 2 or Phase 3 work was started
+	•	No API keys or secrets exist in client-side code
+	•	No secrets are present in the frontend build output
+	•	All sensitive logic remains server-side
 
-If **anything** outside the defined scope was touched:
-- List it clearly
-- Justify why it was unavoidable
+Also state how this was verified:
+	•	Build output inspection
+	•	Config review
+	•	Manual search
+	•	Other concrete method
 
----
+If anything was not verified, mark it UNVERIFIED.
 
-### 4. Truthfulness Audit
+⸻
+
+3. Scope Compliance Check
+Explicitly confirm:
+	•	No new product features were added
+	•	No UI/UX changes were made
+	•	No work beyond the defined task scope was performed
+
+If anything outside scope was touched:
+	•	List it explicitly
+	•	Justify why it was unavoidable
+
+⸻
+
+4. Truthfulness Audit
 List any remaining logic that is:
-- Heuristic
-- Simulated
-- Placeholder
-- Non-backed by real data
+	•	Heuristic
+	•	Placeholder
+	•	Simulated
+	•	Not fully backed by real data
 
-For each item, state whether it was:
-- Removed
-- Clearly labeled
-- Intentionally left untouched (with reason)
+For each:
+	•	Removed
+	•	Clearly labeled
+	•	Intentionally left untouched (with reason)
 
----
+⸻
 
-### 5. Build & Run Status
-- Exact steps to run the system after changes
-- Confirmation that:
-  - The project builds successfully
-  - The project runs without runtime errors
+5. Build & Run Status
+	•	Exact steps to build and run the project
+	•	Explicit confirmation that:
+	•	Build succeeds
+	•	Runtime starts without errors
 
----
+⸻
 
-### 6. Risk Residuals
-- Explicit list of known risks that still remain
-- Why each risk is acceptable **at this phase**
-- Risks must not be minimized or hand-waved
+6. Risk Residuals
+	•	Known risks that remain
+	•	Why each risk is acceptable at this phase
+	•	No minimization or hand-waving
 
----
+⸻
 
-### Format & Accountability Rules
-- No vague statements (e.g., “cleaned up”, “fixed issues”)
-- No assumptions
-- Precision over brevity
-- If something cannot be verified with certainty, mark it **UNVERIFIED**
+Archival Requirement (Mandatory)
 
-Failure to provide this report means the task is incomplete.
+After generating the report:
+	1.	Save it verbatim as a Markdown file in:
+
+/documentation/implementation/
+
+	2.	File naming format:
+
+YYYY-MM-DD_verification-change-report_<short-task-name>.md
+
+	3.	Do not overwrite any existing documentation.
+Documentation is append-only.
+
+⸻
+
+Rules
+	•	No vague statements
+	•	No assumptions
+	•	Precision over brevity
+	•	Anything not verified must be labeled UNVERIFIED
+	•	If this report is missing or not archived, the task is incomplete
+
+⸻
+
+This version is short, enforceable, auditable, and now self-archiving.
